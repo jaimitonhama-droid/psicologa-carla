@@ -1,0 +1,190 @@
+/* ===========================
+   CONTATO PAGE
+   =========================== */
+
+.contact-section { background: var(--white); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+/* Coluna esquerda */
+.contact-info h2 { margin: 0.5rem 0 1.2rem; }
+.contact-info > p { margin-bottom: 2.5rem; }
+
+/* Botão WhatsApp principal */
+.whatsapp-main {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: #25D366;
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.25s;
+}
+.whatsapp-main:hover {
+  background: #1DA851;
+  transform: translateY(-2px);
+}
+.wa-icon {
+  width: 48px; height: 48px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wa-icon svg {
+  width: 24px; height: 24px;
+  fill: var(--white);
+}
+.wa-text { flex: 1; }
+.wa-text strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+.wa-text span {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+}
+.wa-arrow {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.7);
+  transition: transform 0.25s;
+}
+.whatsapp-main:hover .wa-arrow { transform: translateX(4px); }
+
+/* Detalhes de contacto */
+.contact-details {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.contact-detail {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.contact-detail:last-child { border-bottom: none; }
+.detail-icon-col {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.4rem 0;
+  border-right: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--gold);
+}
+.detail-icon-col svg {
+  width: 18px; height: 18px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  margin-top: 2px;
+}
+.detail-body {
+  padding: 1.4rem 1.5rem;
+}
+.detail-body label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+.detail-body span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* FAQ */
+.contact-faq h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--green);
+  margin-bottom: 2rem;
+}
+
+.faq-list {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-item:last-child { border-bottom: none; }
+
+.faq-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.3rem 1.8rem;
+  background: var(--white);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--green);
+  transition: background 0.2s, color 0.2s;
+}
+.faq-btn:hover { background: var(--cream); }
+.faq-btn[aria-expanded="true"] {
+  background: var(--cream);
+  color: var(--gold);
+}
+.faq-icon {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+  position: relative;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.faq-icon::before { width: 12px; height: 1.5px; top: 9px; left: 4px; }
+.faq-icon::after  { width: 1.5px; height: 12px; top: 4px; left: 9px; }
+.faq-btn[aria-expanded="true"] .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-answer.open { max-height: 220px; }
+.faq-answer p {
+  padding: 0 1.8rem 1.5rem;
+  font-size: 0.88rem;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+}

@@ -1,0 +1,321 @@
+/* ===========================
+   CARLA REIS — PSICÓLOGA
+   Design System Global
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+/* --- Variáveis --- */
+:root {
+  --cream:        #F7F3EC;
+  --cream-dark:   #EDE5D5;
+  --green:        #2B4235;
+  --green-mid:    #3D5E4A;
+  --gold:         #A87C3E;
+  --gold-light:   #C9A76A;
+  --text:         #1C2B22;
+  --text-mid:     #4A5C4F;
+  --text-light:   #8A9E91;
+  --white:        #FFFFFF;
+  --border:       rgba(168,124,62,0.18);
+  --shadow-sm:    0 2px 12px rgba(43,66,53,0.08);
+  --shadow-md:    0 6px 30px rgba(43,66,53,0.12);
+  --shadow-lg:    0 16px 50px rgba(43,66,53,0.15);
+  --font-serif:   'Playfair Display', Georgia, serif;
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --radius:       12px;
+  --radius-lg:    24px;
+  --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Reset --- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; transition: color 0.25s var(--ease); }
+img { max-width: 100%; display: block; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream-dark); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+/* --- Tipografia --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--green);
+  line-height: 1.15;
+  font-weight: 600;
+}
+h1 { font-size: clamp(2.6rem, 5vw, 4.4rem); }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
+p  { color: var(--text-mid); line-height: 1.85; font-size: 0.97rem; }
+
+/* === NAVBAR === */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 6%;
+  background: rgba(247,243,236,0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.navbar.scrolled {
+  padding: 0.9rem 6%;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-logo { display: flex; flex-direction: column; line-height: 1; }
+.nav-logo .logo-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 0.01em;
+}
+.nav-logo .logo-sub {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 3px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.8rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-mid);
+  position: relative;
+  padding-bottom: 3px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s var(--ease);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--green); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+.nav-btn {
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  color: var(--white) !important;
+  background: var(--green);
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  transition: background 0.25s var(--ease) !important;
+}
+.nav-btn:hover { background: var(--gold) !important; }
+.nav-btn::after { display: none !important; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+  z-index: 1002;
+}
+.hamburger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--green);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease), opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+.overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 1000;
+}
+.overlay.active { display: block; }
+
+/* === BOTÕES === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border: none;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  text-transform: uppercase;
+}
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--gold);
+  box-shadow: var(--shadow-sm);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--green);
+  border: 1.5px solid var(--green);
+}
+.btn-outline:hover {
+  background: var(--green);
+  color: var(--white);
+}
+.btn-whatsapp {
+  background: #25D366;
+  color: var(--white);
+}
+.btn-whatsapp:hover { background: #1DA851; }
+
+/* === UTILITÁRIOS === */
+.container { max-width: 1180px; margin: 0 auto; }
+.section    { padding: 6rem 6%; }
+
+.section-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.section-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 1.2rem 0 0;
+}
+.section-line.center { margin: 1.2rem auto 0; }
+
+/* === PÁGINA HERO (páginas internas) === */
+.page-hero {
+  padding: 10rem 6% 5rem;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+.page-hero h1 { margin: 0.5rem 0 1rem; }
+.page-hero p  { max-width: 520px; font-size: 1.05rem; }
+
+/* === RODAPÉ === */
+footer {
+  background: var(--green);
+  padding: 3rem 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: center;
+}
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.footer-crp {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-nav a {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.25s;
+}
+.footer-nav a:hover { color: var(--gold-light); }
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  width: 100%;
+}
+
+/* === WHATSAPP FLUTUANTE === */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  z-index: 999;
+  width: 52px; height: 52px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+}
+.whatsapp-float svg {
+  width: 26px; height: 26px;
+  fill: var(--white);
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 900px) {
+  .nav-links {
+    position: fixed;
+    top: 0; right: -100%;
+    height: 100vh; width: 72%; max-width: 300px;
+    background: var(--cream);
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    box-shadow: -8px 0 40px rgba(0,0,0,0.1);
+    transition: right 0.35s var(--ease);
+    z-index: 1001;
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a { font-size: 1rem; }
+  .hamburger { display: flex; }
+  .section { padding: 4rem 5%; }
+}

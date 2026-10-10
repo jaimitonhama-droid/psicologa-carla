@@ -1,0 +1,167 @@
+/* ===========================
+   SERVIÇOS PAGE
+   =========================== */
+
+.services-page { background: var(--white); }
+
+/* Lista de serviços */
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 3.5rem;
+}
+.service-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.25s;
+}
+.service-row:last-child { border-bottom: none; }
+.service-row:hover { background: var(--cream); }
+
+.service-index {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem 0;
+  border-right: 1px solid var(--border);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--gold);
+  opacity: 0.6;
+}
+.service-body {
+  padding: 2.5rem 3rem;
+}
+.service-body h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.service-body p {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+.service-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--cream-dark);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.3rem 0.75rem;
+}
+
+/* Modalidades */
+.modalities-section { background: var(--cream); }
+
+.modalities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 3.5rem;
+}
+.modality-card {
+  background: var(--white);
+  padding: 3rem;
+}
+.modality-card.dark {
+  background: var(--green);
+}
+.modality-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 1.2rem;
+}
+.modality-card.dark .modality-label { color: var(--gold-light); }
+.modality-card h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+.modality-card.dark h3 { color: var(--white); }
+.modality-card > p { margin-bottom: 1.5rem; }
+.modality-card.dark > p { color: rgba(255,255,255,0.7); }
+
+.modality-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+.modality-list li {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  padding-left: 1rem;
+  position: relative;
+}
+.modality-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 400;
+}
+.modality-card.dark .modality-list li { color: rgba(255,255,255,0.7); }
+.modality-card.dark .modality-list li::before { color: var(--gold-light); }
+
+/* Para quem */
+.forwhom-section { background: var(--white); }
+.forwhom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 3.5rem;
+}
+.forwhom-item {
+  background: var(--cream);
+  padding: 2rem 1.8rem;
+  transition: background 0.25s;
+}
+.forwhom-item:hover { background: var(--white); }
+.forwhom-item h4 {
+  font-size: 0.95rem;
+  color: var(--green);
+  margin-bottom: 0.5rem;
+}
+.forwhom-item p { font-size: 0.85rem; line-height: 1.7; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .service-row { grid-template-columns: 60px 1fr; }
+  .service-body { padding: 2rem; }
+  .modalities-grid { grid-template-columns: 1fr; }
+  .forwhom-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .forwhom-grid { grid-template-columns: 1fr; }
+  .service-row { grid-template-columns: 1fr; }
+  .service-index {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem 2rem;
+    justify-content: flex-start;
+  }
+}
